@@ -18,7 +18,9 @@ def calculate_absolute_offset(element, list_of_x_and_y_offsets):
 def generate_random_curve_parameters(driver, pre_origin, post_destination):
     """Generates random parameters for the curve, the tween, number of knots, distortion, target points and boundaries"""
     web = False
-    if isinstance(driver, (Chrome, Firefox, Edge, Safari)):
+    browser_name = type(driver).__name__
+
+    if browser_name in ("Chrome", "Firefox", "Edge", "Safari"):
         web = True
         viewport_width, viewport_height = driver.get_window_size().values()
     else:
